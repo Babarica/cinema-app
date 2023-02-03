@@ -37,6 +37,9 @@
     "vuex": "^3.6.2",
     "webpack": "^4.46.0"
   },
+  "engines": {
+    "node": "14.7.6"
+  },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.0.0-0",
     "eslint-config-prettier": "^8.3.0",
