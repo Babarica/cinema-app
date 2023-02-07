@@ -12,8 +12,8 @@
       </vcontainer>
     </div>
     
-    <new-films></new-films>
-    <recomend-films></recomend-films>
+    <!-- <new-films></new-films> -->
+    <!-- <recomend-films></recomend-films> -->
     <main-footer></main-footer>
     
   </div>
@@ -34,38 +34,38 @@ export default {
     await this.getMovies()
   },
   methods: {
-    async getMovies(){
-      var now = new Date();
-      const year = now.getFullYear()
-      let mothnes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-      const month = mothnes[now.getMonth()]
-      const data = this.$axios.$get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year}&month=${month}`,{
-        headers: {
-            'X-API-KEY': 'ca3c2af1-471d-47a8-8494-92c7e76804f5',
-            'Content-Type': 'application/json',
-        },
-      }).catch(err=> {
-        console.log(err.response)
-      })
-      const result = await data
-      const randomNew = this.getRandomValues(30,5)
-      for(let j = 0; j<5; j++){
-        this.newFilms.push(result.items[randomNew[j]])
-      }
-      this.$store.commit('actualMovies/showNewFilms',  this.newFilms)
+    // async getMovies(){
+    //   var now = new Date();
+    //   const year = now.getFullYear()
+    //   let mothnes = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    //   const month = mothnes[now.getMonth()]
+    //   const data = this.$axios.$get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year}&month=${month}`,{
+    //     headers: {
+    //         'X-API-KEY': 'ca3c2af1-471d-47a8-8494-92c7e76804f5',
+    //         'Content-Type': 'application/json',
+    //     },
+    //   }).catch(err=> {
+    //     console.log(err.response)
+    //   })
+    //   const result = await data
+    //   const randomNew = this.getRandomValues(30,5)
+    //   for(let j = 0; j<5; j++){
+    //     this.newFilms.push(result.items[randomNew[j]])
+    //   }
+    //   this.$store.commit('actualMovies/showNewFilms',  this.newFilms)
       
-    },
-    getRandomValues(range,count){
-      let m = {};
-      let a = [];
-      for (let i = 0; i < count; ++i) {
-        let r = Math.floor(Math.random() * (range - i));
-        a.push(((r in m) ? m[r] : r) + 1);
-        let l = range - i - 1;
-        m[r] = (l in m) ? m[l] : l;
-      }
-      return a
-    }
+    // },
+    // getRandomValues(range,count){
+    //   let m = {};
+    //   let a = [];
+    //   for (let i = 0; i < count; ++i) {
+    //     let r = Math.floor(Math.random() * (range - i));
+    //     a.push(((r in m) ? m[r] : r) + 1);
+    //     let l = range - i - 1;
+    //     m[r] = (l in m) ? m[l] : l;
+    //   }
+    //   return a
+    // }
   }
 }
 </script>
